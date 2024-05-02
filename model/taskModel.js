@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const taskModelSchema = new mongoose.Schema({
+  projectName: {
+    type: String,
+  },
   taskName: {
     type: String,
-    // handle them after geting it from fontend so that empty data is not crated, so required raklam na
   },
   taskDescription: {
     type: String,
-    // handle them after geting it from fontend so that empty data is not crated, so required raklam na
   },
   deadline: {
     type: Date,
@@ -14,13 +15,10 @@ const taskModelSchema = new mongoose.Schema({
   dueDate: {
     type: Date,
   },
-
-  assignMembers: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Member",
-    },
-  ],
+  // taskId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  // },
+  assignMembers: [String],
 });
-const TaskModel = mongoose.model("TaskModel", taskModelSchema);
-module.exports = TaskModel;
+const Task = mongoose.model("Task", taskModelSchema);
+module.exports = Task;

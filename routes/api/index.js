@@ -1,7 +1,12 @@
 const express = require("express");
-const overViewController = require("../../controller/overViewController");
-const overviewRouter = express.Router();
+const overviewRouter = require("./overviewRouter");
+const membersRouter = require("./memberRouter");
+const apiRouter = express.Router();
 
-overviewRouter.post("/overview", overViewController);
+// overview routes
+apiRouter.use("/overview", overviewRouter);
 
-module.exports = overviewRouter;
+// members
+apiRouter.use("/members", membersRouter);
+
+module.exports = apiRouter;
